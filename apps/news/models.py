@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import timezone
+from django.utils.timezone import now
 from enum import Enum
 
 
@@ -55,12 +55,11 @@ class Article(models.Model):
     title = models.CharField(max_length=200)
     language = LanguagesField()
     content = models.TextField()
-    minutes_read = models.IntegerField(default=5, max_length=15)
+    minutes_read = models.IntegerField(default=5)
     cover_url = models.URLField(null=True, blank=True)
-    created_at = models.DateTimeField(default=timezone.now())
-    source = models.ForeignKey(Source, related_name='source', on_delete=models.SET_NULL)
-    category = models.ForeignKey(Category, related_name='source', on_delete=models.SET_NULL)
-
+    created_at = models.DateTimeField(default=now)
+    source = models.ForeignKey(Source, null=True, blank=True, related_name='source', on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, null=True, blank=True, related_name='source', on_delete=models.SET_NULL)
 
     def __str__(self):
         return f"{self.title} | {self.language}"
