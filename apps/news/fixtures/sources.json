@@ -1,0 +1,394 @@
+[
+  {
+    "model": "news.source",
+    "pk": 1,
+    "fields": {
+      "name": "Le Buteur",
+      "slug": "le-buteur",
+      "language": "fr",
+      "logo_url": "https://www.lebuteur.com/themes/frontend/images/newlogo.jpg",
+      "background_color": "#D80000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.lebuteur.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 2,
+    "fields": {
+      "name": "Comp\u00e9tition",
+      "slug": "competition",
+      "language": "fr",
+      "logo_url": "http://www.competition.dz/templates/shaper_soccer/images/presets/preset4/logo@2x.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://www.competition.dz/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 3,
+    "fields": {
+      "name": "L\u2019expression",
+      "slug": "l-expression",
+      "language": "fr",
+      "logo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnnMI1AdZTBC4NoDXx47tkDw7Vc4PK4q3Jyrb2-9o-hUXwie-5",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.lexpressiondz.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 4,
+    "fields": {
+      "name": "Le matin",
+      "slug": "le-matin",
+      "language": "fr",
+      "logo_url": "https://www.lematindalgerie.com/profiles/thunder/themes/newsplus_lite/logo.svg",
+      "background_color": "#ffffff",
+      "text_color": "#AE2023",
+      "is_enabled": true,
+      "website": "https://www.lematindalgerie.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 5,
+    "fields": {
+      "name": "Le Soir",
+      "slug": "le-soir",
+      "language": "fr",
+      "logo_url": "https://www.lesoirdalgerie.com/themes/frontend/img/header/logo_text.png",
+      "background_color": "#D90000",
+      "text_color": "#000000",
+      "is_enabled": true,
+      "website": "https://www.lesoirdalgerie.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 6,
+    "fields": {
+      "name": "El Watan",
+      "slug": "el-watan",
+      "language": "fr",
+      "logo_url": "https://elwatan.com/wp-content/uploads/2017/11/elwatan-logo.jpg",
+      "background_color": "#ffffff",
+      "text_color": "#000000",
+      "is_enabled": true,
+      "website": "https://www.elwatan.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 7,
+    "fields": {
+      "name": "Libert\u00e9",
+      "slug": "liberte",
+      "language": "fr",
+      "logo_url": "https://www.liberte-algerie.com/themes/frontend/background-images/logo.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.liberte-algerie.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 8,
+    "fields": {
+      "name": "TSA",
+      "slug": "tsa",
+      "language": "fr",
+      "logo_url": "https://www.android-dz.com/wp-content/uploads/2017/10/tsa.png",
+      "background_color": "#ffffff",
+      "text_color": "#B8111A",
+      "is_enabled": true,
+      "website": "https://www.tsa-algerie.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 9,
+    "fields": {
+      "name": "El Manchar",
+      "slug": "el-manchar",
+      "language": "fr",
+      "logo_url": "https://el-manchar.com/wp-content/uploads/2019/03/logo.svg",
+      "background_color": "#ffffff",
+      "text_color": "#DE0F25",
+      "is_enabled": true,
+      "website": "https://el-manchar.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 10,
+    "fields": {
+      "name": "Algerie Part",
+      "slug": "algerie-part",
+      "language": "fr",
+      "logo_url": "https://img.over-blog-kiwi.com/0/93/22/50/20190328/ob_6eb425_algerie-part-logo.jpg",
+      "background_color": "#ffffff",
+      "text_color": "#000000",
+      "is_enabled": true,
+      "website": "https://algeriepart.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 11,
+    "fields": {
+      "name": "Algerie 360",
+      "slug": "algerie-360",
+      "language": "fr",
+      "logo_url": "https://www.algerie360.com/wp-content/themes/v3-5/images/logoA360.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.algerie360.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 12,
+    "fields": {
+      "name": "Cuisine Alg\u00e9rie",
+      "slug": "cuisine-algerie",
+      "language": "fr",
+      "logo_url": "http://www.cuisine-algerie.com/images/cuisine-algerienne-logo.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://www.cuisine-algerie.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 13,
+    "fields": {
+      "name": "DZ Foot",
+      "slug": "dz-foot",
+      "language": "fr",
+      "logo_url": "http://www.dzfoot.com/wp-content/themes/dzfoot/img/logo.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://www.dzfoot.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 14,
+    "fields": {
+      "name": "Android Dz",
+      "slug": "android-dz",
+      "language": "fr",
+      "logo_url": "https://www.android-dz.com/wp-content/uploads/2015/04/Petit-Logo-Android-DZ.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.android-dz.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 15,
+    "fields": {
+      "name": "\u0627\u0644\u0646\u0647\u0627\u0631",
+      "slug": "ennahar",
+      "language": "ar",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Ennahar_TV.svg/1200px-Ennahar_TV.svg.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.ennaharonline.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 16,
+    "fields": {
+      "name": "\u0627\u0644\u0634\u0631\u0648\u0642",
+      "slug": "echorouk",
+      "language": "ar",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/fr/2/24/Logo_echorouk.jpg",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.echoroukonline.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 17,
+    "fields": {
+      "name": "\u0627\u0644\u062e\u0628\u0631",
+      "slug": "elkhabar",
+      "language": "ar",
+      "logo_url": "https://www.elkhabar.com/static/new/images/logo.jpg",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.elkhabar.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 18,
+    "fields": {
+      "name": "\u0627\u0644\u0628\u0644\u0627\u062f",
+      "slug": "elbilad",
+      "language": "ar",
+      "logo_url": "https://www.vitaminedz.com/articles/2382/2382670.jpg",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://www.elbilad.net/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 19,
+    "fields": {
+      "name": "\u0627\u0644\u062d\u0648\u0627\u0631",
+      "slug": "elhiwar",
+      "language": "ar",
+      "logo_url": "http://aljazair24.com/wp-content/uploads/2018/01/Untitled-8.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://elhiwardz.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 20,
+    "fields": {
+      "name": "\u0627\u0644\u0647\u062f\u0627\u0641",
+      "slug": "elheddaf",
+      "language": "ar",
+      "logo_url": "http://www.elheddaf.com/themes/frontend/images/css-images/logo.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://www.elheddaf.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 21,
+    "fields": {
+      "name": "\u0627\u0644\u0645\u064a\u062f\u0627\u0646",
+      "slug": "elmaidane",
+      "language": "ar",
+      "logo_url": "http://elmaidane.com/wp-content/uploads/2018/10/1.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://elmaidane.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 22,
+    "fields": {
+      "name": "\u0627\u0644\u062c\u0632\u0627\u0626\u0631 24",
+      "slug": "aljazair24",
+      "language": "ar",
+      "logo_url": "http://aljazair24.com/logo%20(4).png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://aljazair24.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 23,
+    "fields": {
+      "name": "\u062c\u0632\u0627\u064a\u0631\u0633",
+      "slug": "djazairess",
+      "language": "ar",
+      "logo_url": "https://www.djazairess.com/resources/djazairess-logo-ar.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.djazairess.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 24,
+    "fields": {
+      "name": "\u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u0623\u0646\u0628\u0627\u0621 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a\u0629",
+      "slug": "aps",
+      "language": "ar",
+      "logo_url": "http://qvbotdu.x.incapdns.net/images/logo-aps.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://www.aps.dz"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 25,
+    "fields": {
+      "name": "\u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0627\u0644\u064a\u0648\u0645",
+      "slug": "aljazairalyoum",
+      "language": "ar",
+      "logo_url": "https://aljazairalyoum.com/wp-content/uploads/2019/02/logo-aljazairalyoum.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://www.aljazairalyoum.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 26,
+    "fields": {
+      "name": "\u062f\u0632\u0627\u064a\u0631 \u0641\u0648\u062a",
+      "slug": "dzairfoot",
+      "language": "ar",
+      "logo_url": "http://dzairfoot.tv/wp-content/uploads/2018/01/dzair-foot-final-1-4.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://dzairfoot.tv/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 27,
+    "fields": {
+      "name": "\u062f\u064a\u0632\u0627\u062f\u0646\u062a\u064a\u0643",
+      "slug": "dzntic",
+      "language": "ar",
+      "logo_url": "https://dzntic.com/wp-content/uploads/2018/12/logo-dzntic-final.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "https://dzntic.com/"
+    }
+  },
+  {
+    "model": "news.source",
+    "pk": 28,
+    "fields": {
+      "name": "\u0645\u0637\u0628\u062e \u0627\u0644\u0632\u0647\u0648\u0631",
+      "slug": "ezzouhour",
+      "language": "ar",
+      "logo_url": "http://www.ezzouhour.com/wp-content/themes/eMenu/images/logo.png",
+      "background_color": "#000000",
+      "text_color": "#ffffff",
+      "is_enabled": true,
+      "website": "http://www.ezzouhour.com"
+    }
+  }
+]
