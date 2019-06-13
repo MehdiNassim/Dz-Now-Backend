@@ -50,7 +50,7 @@ class Source(models.Model):
 
 class Article(models.Model):
     """
-    Contact us form messages
+    Article Model
     """
     title = models.CharField(max_length=200)
     language = LanguagesField()
