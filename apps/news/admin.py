@@ -1,8 +1,6 @@
 from django.contrib import admin
+from .models import Category, Source, Article
 
-# register your models here
-
-# from .models import Feedback
-
-# admin.site.register(Feedback)
-
+admin.site.register(Article)
+admin.site.register(Category)
+admin.site.register(Source)

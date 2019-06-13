@@ -15,19 +15,44 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, register_converter
 from django.views.generic import TemplateView
 from django.conf import settings
-from apps.news import views
+from apps.news import views, converters
+
+# /api/v0
+#   /<language_code>/all
+#   /<language_code>/source/<source_id>/<page_number>
+#   /<language_code>/category/<category_id>/<page_number>
+#   /<language_code>/categories
+#   /<language_code>/sources
+#   /<language_code>/reading_time/<minutes>/<page_number>
+
+
+register_converter(converters.LanguageConverter, 'language_code')
 
 urlpatterns = [
     # admin
     url(r'^jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
     # APIs
-    # path('api/v0/now_playing/<int:station_id>/', radio_views.NowPlaying.as_view(), name='NOW_PLAYING_HOOK'),
-    # path('api/v0/dedication/', DedicationUploadAPIView.as_view(), name='DEDICATION_UPLOAD_API'),
-    # path('api/v0/', radio_views.PlaylistsDetailsAPIView.as_view(), name='PLAYLISTS_API'),
+    path('api/v0/<language_code:language>/all/', views.home_view, name='HOME_API'),
+    # SOURCE
+    path('api/v0/<language_code:language>/source/<int:id>/', views.source_view, name='SOURCE_API'),
+    path('api/v0/<language_code:language>/source/<int:id>/<int:page>/', views.source_view, name='SOURCE_API_PAGING'),
+    # CATEGORY
+    path('api/v0/<language_code:language>/category/<int:id>/', views.category_view, name='CATEGORY_API'),
+    path('api/v0/<language_code:language>/category/<int:id>/<int:page>/', views.category_view,
+         name='CATEGORY_API_PAGING'),
+    # CATEGORIES
+    path('api/v0/<language_code:language>/categories/', views.all_categories_view, name='CATEGORIES_API'),
+    # SOURCES
+    path('api/v0/<language_code:language>/sources/', views.all_sources_view, name='SOURCES_API'),
+    # READING TIME FILTER
+    path('api/v0/<language_code:language>/reading_time/<int:minutes>/', views.reading_time_view,
+         name='READING_TIME_API_PAGING'),
+    path('api/v0/<language_code:language>/reading_time/<int:minutes>/<int:page>/', views.reading_time_view,
+         name='READING_TIME_API_PAGING'),
     # WEB
     path('', TemplateView.as_view(template_name='hello_world.html')),
     # STATIC

@@ -29,9 +29,13 @@ class Category(models.Model):
     background_url = models.URLField(default='https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg')
     background_color = models.CharField(max_length=7, default='#000000')
     text_color = models.CharField(max_length=7, default='#ffffff')
+    is_enabled = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.name} | {self.language}"
+
+    class Meta:
+        verbose_name_plural = "Categories"
 
 
 class Source(models.Model):
@@ -43,9 +47,13 @@ class Source(models.Model):
     logo_url = models.URLField(default='https://image.flaticon.com/icons/png/512/21/21601.png')
     background_color = models.CharField(max_length=7, default='#000000')
     text_color = models.CharField(max_length=7, default='#ffffff')
+    is_enabled = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.name} | {self.language}"
+
+    class Meta:
+        verbose_name_plural = "Sources"
 
 
 class Article(models.Model):
@@ -60,6 +68,10 @@ class Article(models.Model):
     created_at = models.DateTimeField(default=now)
     source = models.ForeignKey(Source, null=True, blank=True, related_name='source', on_delete=models.SET_NULL)
     category = models.ForeignKey(Category, null=True, blank=True, related_name='source', on_delete=models.SET_NULL)
+    is_enabled = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.title} | {self.language}"
+
+    class Meta:
+        verbose_name_plural = "Articles"
