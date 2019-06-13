@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body>
+<a href="{% url 'HOME_URL' %}">
+    <h1>
+        DZ Now
+    </h1>
+</a>
+
+<h2 style="margin-top: 5rem;margin-bottom: 5rem;">
+    {% block header %}
+        URLs:
+    {% endblock %}
+</h2>
+<div>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

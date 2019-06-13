@@ -1,0 +1,19 @@
+<div>
+    <h4 style="
+            padding-left: 2rem;
+            padding-top: 2rem;
+            height: 3em;
+            background-color: {{ category.background_color }};
+            color: {{ category.text_color }};">
+        {{ category.name }}
+    </h4>
+    <h2>{{ category.language }}</h2>
+    <div>Link <a href="{% url 'CATEGORY_URL' slug=category.slug %}">{{ category.name }}</a></div>
+    <img src="{{ category.background_url }}" height="200px" width="200px"
+         style="object-fit: cover;object-position: center; margin-top: 3em;">
+    {% if category.description %}
+        <p>
+            category.description
+        </p>
+    {% endif %}
+</div>

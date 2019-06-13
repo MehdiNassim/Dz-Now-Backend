@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Sources
+{% endblock %}
+
+{% block header %}
+    Sources
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for source in sources %}
+            <li style="margin-bottom: 10em;">
+                {% include 'widgets/source.html' with source=source %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

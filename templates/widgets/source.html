@@ -1,0 +1,20 @@
+<div>
+    <h4 style="
+            padding-left: 2rem;
+            padding-top: 2rem;
+            height: 3em;
+            background-color: {{ source.background_color }};
+            color: {{ source.text_color }};">
+        {{ source.name }}
+    </h4>
+    <h2>{{ source.language }}</h2>
+    <div>Link <a href="{% url 'SOURCE_URL' slug=source.slug %}">{{ source.name }}</a></div>
+    <img src="{{ source.logo_url }}" height="96px" width="auto"
+         style="object-fit: cover;object-position: center; margin-top: 3em;">
+    {% if source.description %}
+        <p>
+            source.description
+        </p>
+    {% endif %}
+    <div><a href="{{ source.website }}">Website {{ source.name }}</a></div>
+</div>

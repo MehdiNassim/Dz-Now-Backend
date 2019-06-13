@@ -35,8 +35,11 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         # newly created object
-        if not self.id and not self.slug:
-            self.slug = slugify(self.name)
+        if not self.id:
+            if not self.slug:
+                self.slug = slugify(self.name)
+            else:
+                self.slug = slugify(self.slug)
         super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -69,7 +72,10 @@ class Source(models.Model):
     def save(self, *args, **kwargs):
         # newly created object
         if not self.id and not self.slug:
-            self.slug = slugify(self.name)
+            if not self.slug:
+                self.slug = slugify(self.name)
+            else:
+                self.slug = slugify(self.slug)
         super(Source, self).save(*args, **kwargs)
 
 
@@ -101,5 +107,7 @@ class Article(models.Model):
         if not self.id:
             if not self.slug:
                 self.slug = slugify(self.title)
+            else:
+                self.slug = slugify(self.slug)
             self.minutes_read = minutes_read_calculator(self.content)
         super(Article, self).save(*args, **kwargs)

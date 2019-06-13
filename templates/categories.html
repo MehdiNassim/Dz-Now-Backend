@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Categories
+{% endblock %}
+
+{% block header %}
+    Categories
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for category in categories %}
+            <li style="margin-bottom: 10em;">
+                {% include 'widgets/category.html' with category=category %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Welcome to DzNow
+{% endblock %}
+
+{% block header %}
+    URLs
+{% endblock %}
+
+{% block content %}
+    <ul>
+        <li><a href="{% url 'SOURCES_URL' %}">Sources List</a></li>
+        <li><a href="{% url 'CATEGORIES_URL' %}">Categories List</a></li>
+    </ul>
+{% endblock %}

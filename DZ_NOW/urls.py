@@ -50,11 +50,15 @@ urlpatterns = [
     path('api/v0/<language_code:language>/sources/', views.all_sources_view, name='SOURCES_API'),
     # READING TIME FILTER
     path('api/v0/<language_code:language>/reading_time/<int:minutes>/', views.reading_time_view,
-         name='READING_TIME_API_PAGING'),
+         name='READING_TIME_API'),
     path('api/v0/<language_code:language>/reading_time/<int:minutes>/<int:page>/', views.reading_time_view,
          name='READING_TIME_API_PAGING'),
     # WEB
-    path('', TemplateView.as_view(template_name='hello_world.html')),
+    path('source/<slug:slug>/', views.SourceView.as_view(), name='SOURCE_URL'),
+    path('sources/', views.SourcesView.as_view(), name='SOURCES_URL'),
+    path('category/<slug:slug>/', views.CategoryView.as_view(), name='CATEGORY_URL'),
+    path('categories/', views.CategoriesView.as_view(), name='CATEGORIES_URL'),
+    path('', TemplateView.as_view(template_name='home.html'), name='HOME_URL'),
     # STATIC
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
 ]
