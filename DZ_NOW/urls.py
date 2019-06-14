@@ -28,6 +28,7 @@ from apps.news import views, converters
 #   /<language_code>/sources
 #   /<language_code>/reading_time/<minutes>/<page_number>
 
+# TODO: remove language_code from source,category (it is already associated to the category)
 
 register_converter(converters.LanguageConverter, 'language_code')
 

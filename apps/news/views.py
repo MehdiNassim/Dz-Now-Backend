@@ -23,13 +23,28 @@ def category_view(request, language, id, page=0):
 
 @api_view(['GET'])
 def all_sources_view(request, language):
-    # sources = Stemmer.objects.filter(is_enabled=True, )
-    return Response({}, status=status.HTTP_200_OK)
+    data = get_list_or_404(Source, is_enabled=True, language=language)
+    sources = [{
+        'id': x.id,
+        'name': x.name,
+        'logo_url': x.logo_url,
+        'background_color': x.background_color,
+        'text_color': x.text_color,
+        'website': x.website,
+    } for x in data]
+    return Response(sources, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 def all_categories_view(request, language):
-    categories = get_list_or_404(Category, is_enabled=True, language=language)
+    data = get_list_or_404(Category, is_enabled=True, language=language)
+    categories = [{
+        'id': x.id,
+        'name': x.name,
+        'background_url': x.background_url,
+        'background_color': x.background_color,
+        'text_color': x.text_color,
+    } for x in data]
     return Response(categories, status=status.HTTP_200_OK)
 
 
