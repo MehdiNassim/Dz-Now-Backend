@@ -90,8 +90,8 @@ class Article(models.Model):
     minutes_read = models.IntegerField(default=0)
     cover_url = models.URLField(null=True, blank=True)
     created_at = models.DateTimeField(default=now)
-    source = models.ForeignKey(Source, null=True, blank=True, related_name='source', on_delete=models.SET_NULL)
-    category = models.ForeignKey(Category, null=True, blank=True, related_name='source', on_delete=models.SET_NULL)
+    source = models.ForeignKey(Source, null=True, blank=True, related_name='articles', on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, null=True, blank=True, related_name='articles', on_delete=models.SET_NULL)
     is_enabled = models.BooleanField(default=True)
     original_url = models.URLField(null=True, blank=True)
 
@@ -100,6 +100,8 @@ class Article(models.Model):
 
     class Meta:
         verbose_name_plural = "Articles"
+        get_latest_by = 'created_at'
+        ordering = ["-created_at"]
 
     def save(self, *args, **kwargs):
         # TODO: Add Test source and category same language

@@ -7,20 +7,79 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Article, Category, Source
 
-# TODO: home view
+
 @api_view(['GET'])
 def home_view(request, language):
-    return Response({}, status=status.HTTP_200_OK)
+    data = Article.objects.filter(is_enabled=True, language=language)[:5]
+    latest = [{
+        'id': x.id,
+        'title': x.title,
+        'content': x.content,
+        'minutes_read': x.minutes_read,
+        'cover_url': x.cover_url,
+        'created_at': x.created_at,
+        'category': {
+            'id': x.category.id,
+            'name': x.category.name,
+            'background_url': x.category.background_url,
+            'background_color': x.category.background_color,
+            'text_color': x.category.text_color,
+        },
+        'source': {
+            'id': x.source.id,
+            'name': x.source.name,
+            'logo_url': x.source.logo_url,
+            'background_color': x.source.background_color,
+            'text_color': x.source.text_color,
+            'website': x.source.website,
+        },
+        'url': reverse('ARTICLE_URL', kwargs={'language': language, 'slug': x.slug}),
+    } for x in data]
+
+    data = Category.objects.filter(is_enabled=True, language=language)
+    categories = [
+        {
+            'id': x.id,
+            'name': x.name,
+            'background_url': x.background_url,
+            'background_color': x.background_color,
+            'text_color': x.text_color,
+            'articles': [
+                {
+                    'id': y.id,
+                    'title': y.title,
+                    'content': y.content,
+                    'minutes_read': y.minutes_read,
+                    'cover_url': y.cover_url,
+                    'created_at': y.created_at,
+                    'source': {
+                        'id': y.source.id,
+                        'name': y.source.name,
+                        'logo_url': y.source.logo_url,
+                        'background_color': y.source.background_color,
+                        'text_color': y.source.text_color,
+                        'website': y.source.website,
+                    },
+                    'url': reverse('ARTICLE_URL', kwargs={'language': language, 'slug': y.slug}),
+                }
+                for y in x.articles.filter(is_enabled=True, language=language)[:5]
+            ],
+        } for x in data]
+
+    return Response({
+        'latest': latest,
+        'categories': categories,
+    }, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
-def source_view(request, language, id, page=0):
-    source = get_object_or_404(Source, is_enabled=True, id=id)
+def source_view(request, language, src_id, page=0):
+    source = get_object_or_404(Source, is_enabled=True, id=src_id, language=language)
     data = get_list_or_404(Article, is_enabled=True, source=source.id, language=language)
     paginator = Paginator(data, per_page=10)
 
     articles = [{
-        'id': x.title,
+        'id': x.id,
         'title': x.title,
         'content': x.content,
         'minutes_read': x.minutes_read,
@@ -47,10 +106,40 @@ def source_view(request, language, id, page=0):
         'articles': articles,
     }, status=status.HTTP_200_OK)
 
-# TODO: category view
+
 @api_view(['GET'])
-def category_view(request, language, id, page=0):
-    return Response({}, status=status.HTTP_200_OK)
+def category_view(request, language, cat_id, page=0):
+    category = get_object_or_404(Category, is_enabled=True, id=cat_id, language=language)
+    data = get_list_or_404(Article, is_enabled=True, category=category.id, language=language)
+    paginator = Paginator(data, per_page=10)
+
+    articles = [{
+        'id': x.id,
+        'title': x.title,
+        'content': x.content,
+        'minutes_read': x.minutes_read,
+        'cover_url': x.cover_url,
+        'created_at': x.created_at,
+        'source': {
+            'id': x.source.id,
+            'name': x.source.name,
+            'logo_url': x.source.logo_url,
+            'background_color': x.source.background_color,
+            'text_color': x.source.text_color,
+            'website': x.source.website,
+        },
+        'url': reverse('ARTICLE_URL', kwargs={'language': language, 'slug': x.slug}),
+
+    } for x in paginator.get_page(page)]
+
+    return Response({
+        'id': category.id,
+        'name': category.name,
+        'background_url': category.background_url,
+        'background_color': category.background_color,
+        'text_color': category.text_color,
+        'articles': articles,
+    }, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -79,10 +168,40 @@ def all_categories_view(request, language):
     } for x in data]
     return Response(categories, status=status.HTTP_200_OK)
 
-# TODO: reading time view
+
 @api_view(['GET'])
 def reading_time_view(request, language, minutes, page=0):
-    return Response({}, status=status.HTTP_200_OK)
+    data = Article.objects.filter(is_enabled=True, language=language, minutes_read__lte=minutes)
+    paginator = Paginator(data, per_page=10)
+    articles = [{
+        'id': x.id,
+        'title': x.title,
+        'content': x.content,
+        'minutes_read': x.minutes_read,
+        'cover_url': x.cover_url,
+        'created_at': x.created_at,
+        'source': {
+            'id': x.source.id,
+            'name': x.source.name,
+            'logo_url': x.source.logo_url,
+            'background_color': x.source.background_color,
+            'text_color': x.source.text_color,
+            'website': x.source.website,
+        },
+        'category': {
+            'id': x.category.id,
+            'name': x.category.name,
+            'background_url': x.category.background_url,
+            'background_color': x.category.background_color,
+            'text_color': x.category.text_color,
+        },
+        'url': reverse('ARTICLE_URL', kwargs={'language': language, 'slug': x.slug}),
+
+    } for x in paginator.get_page(page)]
+    return Response({
+        'reading_time': minutes,
+        'articles': articles,
+    }, status=status.HTTP_200_OK)
 
 
 class SourcesView(View):
