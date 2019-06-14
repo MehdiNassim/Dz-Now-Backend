@@ -25,7 +25,7 @@ class Category(models.Model):
     Category Model (exemple: Politique,Sport ...)
     """
     name = models.CharField(max_length=80)
-    slug = models.SlugField(unique=True, max_length=80)
+    slug = models.SlugField(unique=True, max_length=80, default='default')
     language = LanguagesField()
     background_url = models.URLField(default='https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg')
     background_color = models.CharField(max_length=7, default='#000000')
@@ -36,7 +36,7 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         # newly created object
         if not self.id:
-            if not self.slug:
+            if not self.slug or self.slug == 'default':
                 self.slug = slugify(self.name)
             else:
                 self.slug = slugify(self.slug)
@@ -54,7 +54,7 @@ class Source(models.Model):
     Source Model (exemple: El Heddaf, Ennahar, Echourouk, Liberté, ...)
     """
     name = models.CharField(max_length=80)
-    slug = models.SlugField(unique=True, max_length=80)
+    slug = models.SlugField(unique=True, max_length=80, default='default')
     language = LanguagesField()
     logo_url = models.URLField(default='https://image.flaticon.com/icons/png/512/21/21601.png')
     background_color = models.CharField(max_length=7, default='#000000')
@@ -72,7 +72,7 @@ class Source(models.Model):
     def save(self, *args, **kwargs):
         # newly created object
         if not self.id and not self.slug:
-            if not self.slug:
+            if not self.slug or self.slug == 'default':
                 self.slug = slugify(self.name)
             else:
                 self.slug = slugify(self.slug)
@@ -84,10 +84,10 @@ class Article(models.Model):
     Article Model
     """
     title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True, max_length=200)
+    slug = models.SlugField(unique=True, max_length=200, default='default')
     language = LanguagesField()
     content = models.TextField()
-    minutes_read = models.IntegerField(default=5)
+    minutes_read = models.IntegerField(default=0)
     cover_url = models.URLField(null=True, blank=True)
     created_at = models.DateTimeField(default=now)
     source = models.ForeignKey(Source, null=True, blank=True, related_name='source', on_delete=models.SET_NULL)
@@ -105,9 +105,10 @@ class Article(models.Model):
         # TODO: Add Test source and category same language
         # only newly created object
         if not self.id:
-            if not self.slug:
+            if not self.slug or self.slug == 'default':
                 self.slug = slugify(self.title)
             else:
                 self.slug = slugify(self.slug)
-            self.minutes_read = minutes_read_calculator(self.content)
+            if self.minutes_read == 0:
+                self.minutes_read = minutes_read_calculator(self.content)
         super(Article, self).save(*args, **kwargs)

@@ -1,0 +1,33 @@
+{#    title = models.CharField(max_length=200)#}
+{#    slug = models.SlugField(unique=True, max_length=200, default='default')#}
+{#    language = LanguagesField()#}
+{#    content = models.TextField()#}
+{#    minutes_read = models.IntegerField(default=0)#}
+{#    cover_url = models.URLField(null=True, blank=True)#}
+{#    created_at = models.DateTimeField(default=now)#}
+{#    source = models.ForeignKey(Source, null=True, blank=True, related_name='source', on_delete=models.SET_NULL)#}
+{#    category = models.ForeignKey(Category, null=True, blank=True, related_name='source', on_delete=models.SET_NULL)#}
+{#    is_enabled = models.BooleanField(default=True)#}
+{#    original_url = models.URLField(null=True, blank=True)#}
+
+
+<div>
+    {{ article.id }}
+    <h4>
+        {{ article.title }}
+    </h4>
+    <h2>{{ article.created_at }}</h2>
+    <h2>{{ article.language }}</h2>
+    <h2>{{ article.category.name }}</h2>
+    <h2>{{ article.source.name }}</h2>
+    <h2>{{ article.minutes_read }} minutes</h2>
+    <div>Link <a href="{% url 'ARTICLE_URL' slug=article.slug language=article.language %}">
+        {{ article.title }}
+    </a></div>
+    <img src="{{ article.cover_url }}" height="200px" width="300px"
+         style="object-fit: cover;object-position: center; margin-top: 3em;">
+        <p>
+            {{ article.content }}
+        </p>
+    <div><a href="{{ article.original_url }}" target="_blank">Original Url {{ article.source.name }}</a></div>
+</div>
