@@ -8,6 +8,7 @@
         {{ category.name }}
     </h4>
     <h2>{{ category.language }}</h2>
+    <h3>Articles {{ category.articles.count }}</h3>
     <div>Link <a href="{% url 'CATEGORY_URL' slug=category.slug %}">{{ category.name }}</a></div>
     <img src="{{ category.background_url }}" height="200px" width="200px"
          style="object-fit: cover;object-position: center; margin-top: 3em;">

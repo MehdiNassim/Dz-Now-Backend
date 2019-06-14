@@ -8,6 +8,7 @@
         {{ source.name }}
     </h4>
     <h2>{{ source.language }}</h2>
+    <h3>Articles {{ source.articles.count }}</h3>
     <div>Link <a href="{% url 'SOURCE_URL' slug=source.slug %}">{{ source.name }}</a></div>
     <img src="{{ source.logo_url }}" height="96px" width="auto"
          style="object-fit: cover;object-position: center; margin-top: 3em;">
