@@ -1,2 +1,2 @@
 release: python manage.py migrate --noinput
-web: gunicorn LMKHEYAR.wsgi --timeout 60
+web: gunicorn DZ_NOW.wsgi --timeout 60
