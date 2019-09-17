@@ -33,6 +33,12 @@ def home_view(request, language):
             'text_color': x.source.text_color,
             'website': x.source.website,
         },
+        'videos': [
+            {
+                'title': z.title,
+                'url': z.url,
+                'cover': z.cover_url,
+            } for z in x.videos.filter(is_enabled=True)],
         'url': reverse('ARTICLE_URL', kwargs={'language': language, 'slug': x.slug}),
     } for x in data]
 
@@ -60,6 +66,12 @@ def home_view(request, language):
                         'text_color': y.source.text_color,
                         'website': y.source.website,
                     },
+                    'videos': [
+                        {
+                            'title': z.title,
+                            'url': z.url,
+                            'cover': z.cover_url,
+                        } for z in y.videos.filter(is_enabled=True)],
                     'url': reverse('ARTICLE_URL', kwargs={'language': language, 'slug': y.slug}),
                 }
                 for y in x.articles.filter(is_enabled=True, language=language)[:5]
@@ -92,8 +104,13 @@ def source_view(request, language, src_id, page=0):
             'background_color': x.category.background_color,
             'text_color': x.category.text_color,
         },
+        'videos': [
+            {
+                'title': z.title,
+                'url': z.url,
+                'cover': z.cover_url,
+            } for z in x.videos.filter(is_enabled=True)],
         'url': reverse('ARTICLE_URL', kwargs={'language': language, 'slug': x.slug}),
-
     } for x in paginator.get_page(page)]
 
     return Response({
@@ -128,6 +145,12 @@ def category_view(request, language, cat_id, page=0):
             'text_color': x.source.text_color,
             'website': x.source.website,
         },
+        'videos': [
+            {
+                'title': z.title,
+                'url': z.url,
+                'cover': z.cover_url,
+            } for z in x.videos.filter(is_enabled=True)],
         'url': reverse('ARTICLE_URL', kwargs={'language': language, 'slug': x.slug}),
 
     } for x in paginator.get_page(page)]
@@ -195,6 +218,12 @@ def reading_time_view(request, language, minutes, page=0):
             'background_color': x.category.background_color,
             'text_color': x.category.text_color,
         },
+        'videos': [
+            {
+                'title': z.title,
+                'url': z.url,
+                'cover': z.cover_url,
+            } for z in x.videos.filter(is_enabled=True)],
         'url': reverse('ARTICLE_URL', kwargs={'language': language, 'slug': x.slug}),
 
     } for x in paginator.get_page(page)]

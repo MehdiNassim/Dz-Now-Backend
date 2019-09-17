@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
 from enum import Enum
+from unidecode import unidecode
 from django.template.defaultfilters import slugify
 from .utils import minutes_read_calculator
 
@@ -108,9 +109,20 @@ class Article(models.Model):
         # only newly created object
         if not self.id:
             if not self.slug or self.slug == 'default':
-                self.slug = slugify(self.title)
+                self.slug = slugify(unidecode(self.title))
             else:
-                self.slug = slugify(self.slug)
+                self.slug = slugify(unidecode(self.slug))
             if self.minutes_read == 0:
                 self.minutes_read = minutes_read_calculator(self.content)
         super(Article, self).save(*args, **kwargs)
+
+
+class Video(models.Model):
+    url = models.URLField(unique=True)
+    is_enabled = models.BooleanField(default=True)
+    title = models.CharField(max_length=255)
+    cover_url = models.URLField(null=True, blank=True)
+    article = models.ForeignKey(Article, null=True, blank=True, related_name='videos', on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return f"{self.title} | {self.url}"
