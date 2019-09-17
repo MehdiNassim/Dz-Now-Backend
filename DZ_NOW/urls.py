@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, include, register_converter
+from django.urls import path, register_converter, include
 from django.views.generic import TemplateView
 from django.conf import settings
 from apps.news import views, converters
@@ -40,7 +40,8 @@ urlpatterns = [
     path('api/v0/<language_code:language>/all/', views.home_view, name='HOME_API'),
     # SOURCE
     path('api/v0/<language_code:language>/source/<int:src_id>/', views.source_view, name='SOURCE_API'),
-    path('api/v0/<language_code:language>/source/<int:src_id>/<int:page>/', views.source_view, name='SOURCE_API_PAGING'),
+    path('api/v0/<language_code:language>/source/<int:src_id>/<int:page>/', views.source_view,
+         name='SOURCE_API_PAGING'),
     # CATEGORY
     path('api/v0/<language_code:language>/category/<int:cat_id>/', views.category_view, name='CATEGORY_API'),
     path('api/v0/<language_code:language>/category/<int:cat_id>/<int:page>/', views.category_view,
@@ -54,7 +55,6 @@ urlpatterns = [
          name='READING_TIME_API'),
     path('api/v0/<language_code:language>/reading_time/<int:minutes>/<int:page>/', views.reading_time_view,
          name='READING_TIME_API_PAGING'),
-
 
     # WEB
     path('<language_code:language>/article/<slug:slug>/', views.ArticleView.as_view(), name='ARTICLE_URL'),

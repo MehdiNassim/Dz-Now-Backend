@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -115,16 +116,18 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # other folders to lock for statics in addition to any $APP/static
-STATICFILES_DIRS = [
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-]
+)
 # from where we serve static files (route)
-STATIC_URL = '/staticfiles/'
+STATIC_URL = '/static/'
 
 # from where we serve media files
 MEDIA_URL = '/media/'
 
 # folder where we store media files
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SECURE_SSL_REDIRECT = not DEBUG
