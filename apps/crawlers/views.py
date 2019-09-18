@@ -8,9 +8,9 @@ from .sources.lexpression import lexpression_crawler
 from .sources.lexpression_culture import lexpression_culture_crawler
 
 ALL_CRAWLERS = [
-    dzfoot_crawler,
+    # dzfoot_crawler,
     lexpression_crawler,
-    lexpression_culture_crawler,
+    # lexpression_culture_crawler,
 ]
 
 
@@ -52,10 +52,13 @@ def all_crawlers_view(request):
                 )
                 print(f"{ar.title} has been added")
                 for video_id in article['videos']:
-                    if video_id and len(video_id) == 11:
-                        vid = get_video_details(video_id)
-                        create_video(vid['url'], vid['title'], vid['cover'], ar.pk)
-                        print(f"Video {vid['url']} has been added")
+                    if video_id and isinstance(video_id, str):
+                        try:
+                            vid = get_video_details(video_id)
+                            create_video(vid['url'], vid['title'], vid['cover'], ar.pk)
+                            print(f"Video {vid['url']} has been added")
+                        except Exception as e:
+                            print('error', e)
             else:
                 print(f"{article['title']} already existe")
 

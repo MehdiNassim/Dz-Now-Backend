@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from .utils import get_video_ids
 
 url = "http://www.dzfoot.com/"
 source_id = 13  # dzfoot
@@ -29,6 +30,6 @@ def dzfoot_crawler():
             'source': source_id,
             'category': category_id,
             'original_url': original_url,
-            'videos': [],
+            'videos': get_video_ids(r2.text),
         })
     return res

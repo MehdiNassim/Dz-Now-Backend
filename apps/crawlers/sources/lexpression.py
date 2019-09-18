@@ -14,9 +14,6 @@ def lexpression_crawler():
     r1 = requests.get(url)
     s1 = BeautifulSoup(r1.text, "html.parser")
     bloc = s1.find('ul', {'class': 'list-slider'})
-    # for each new article
-    if not bloc:
-        return []
     for li in bloc.find_all('li', {'class': 'video'}):
         link = li.find('a')
         img = link.find('img')
@@ -26,7 +23,6 @@ def lexpression_crawler():
         r2 = requests.get(original_url)
         s2 = BeautifulSoup(r2.text, "html.parser")
         content = s2.find('div', {'class': 'module-article'}).get_text()
-        videos = get_video_ids(r2.text),
         item = {
             'title': title,
             'cover_url': cover_url,
@@ -35,7 +31,7 @@ def lexpression_crawler():
             'source': source_id,
             'category': category_id,
             'original_url': original_url,
-            'videos': videos,
+            'videos': get_video_ids(r2.text),
         }
         res.append(item)
     return res

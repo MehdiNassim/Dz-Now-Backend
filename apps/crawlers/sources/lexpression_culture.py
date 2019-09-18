@@ -33,7 +33,6 @@ def lexpression_culture_crawler():
         if not div:
             continue
         content = div.get_text()
-        videos = get_video_ids(r2.text),
         item = {
             'title': title,
             'cover_url': cover_url,
@@ -42,7 +41,7 @@ def lexpression_culture_crawler():
             'source': source_id,
             'category': category_id,
             'original_url': original_url,
-            'videos': videos,
+            'videos': get_video_ids(r2.text),
         }
         res.append(item)
     return res

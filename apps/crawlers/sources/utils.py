@@ -1,9 +1,15 @@
 import re
-from bs4 import BeautifulSoup
+
+
+# from bs4 import BeautifulSoup
 
 
 def get_video_ids(html_text):
     video_ids = re.findall('youtube.com\/embed\/([-\w]{11})', html_text)
+    return video_ids
+    # function used for removing nested
+    # lists in python.
+
     # video_ids = re.findall(
     #     '(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})'
     #     , html_text)
@@ -25,4 +31,3 @@ def get_video_ids(html_text):
     #         videoids.append(re.search('youtube.com\/watch\?v=([-\w]+)', href).group(1))
     #     if href and re.search('youtu\.be\/([-\w]+)', href):
     #         videoids.append(re.search('youtu\.be\/([-\w]+)', href).group(1))
-    return video_ids
