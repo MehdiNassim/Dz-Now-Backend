@@ -55,7 +55,8 @@ urlpatterns = [
          name='READING_TIME_API'),
     path('api/v0/<language_code:language>/reading_time/<int:minutes>/<int:page>/', views.reading_time_view,
          name='READING_TIME_API_PAGING'),
-
+    path('api/v0/', include('apps.users.urls')),
+    path('api/v0/', include('apps.crawlers.urls')),
     # WEB
     path('<language_code:language>/article/<slug:slug>/', views.ArticleView.as_view(), name='ARTICLE_URL'),
     path('source/<slug:slug>/', views.SourceView.as_view(), name='SOURCE_URL'),

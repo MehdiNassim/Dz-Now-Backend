@@ -6,3 +6,7 @@ gunicorn
 psycopg2-binary
 unidecode
 whitenoise
+django-cors-headers
+google-auth
+requests
+beautifulsoup4
